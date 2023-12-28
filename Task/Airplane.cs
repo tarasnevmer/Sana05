@@ -8,10 +8,15 @@ namespace Task
 {
     public class Airplane
     {
-        protected string StarCity;
-        protected string FinishCity;
-        protected MyDate StartDate;
-        protected MyDate FinishDate;
+        protected string StartCity { get; set; }
+        protected string FinishCity { get; set; }
+        protected MyDate StartDate { get; set; }
+        protected MyDate FinishDate { get; set; }
+
+        public Airplane()
+        {
+            
+        }
 
         public Airplane(string startCity, string finishCity, MyDate startDate, MyDate finishDate)
         {
@@ -21,19 +26,29 @@ namespace Task
             FinishDate = finishDate;
         }
 
+        public Airplane(Airplane otherAirplane)
+        {
+            StartCity = otherAirplane.StartCity;
+            FinishCity = otherAirplane.FinishCity;
+            StartDate = new MyDate(otherAirplane.StartDate); 
+            FinishDate = new MyDate(otherAirplane.FinishDate); 
+        }
+
+
         public int GetTotalTime()
         {
-            TimeSpan totalTime = FinishDate - StartDate;
-            return (int)totalTime.TotalMinutes;
+            int totalMinutes = (FinishDate.Year - StartDate.Year) * 365 * 24 * 60 +
+                        (FinishDate.Month - StartDate.Month) * 30 * 24 * 60 +
+                        (FinishDate.Day - StartDate.Day) * 24 * 60 +
+                        (FinishDate.Hours - StartDate.Hours) * 60 +
+                        (FinishDate.Minutes - StartDate.Minutes);
+
+            return Math.Max(totalMinutes, 0);
         }
 
         public bool IsArrivingToday()
         {
-            if (StartDate.Year == FinishDate.Year && StartDate.Month == FinishDate.Month && StartDate.Day == FinishDate.Day)
-            {
-                return true;
-            }
-            return false;
+            return StartDate.Year == FinishDate.Year && StartDate.Month == FinishDate.Month && StartDate.Day == FinishDate.Day;
         }
 
     }

@@ -34,6 +34,14 @@ namespace Task
             FinishDate = new MyDate(otherAirplane.FinishDate); 
         }
 
+        public Airplane(string startCity, string finishCity)
+        {
+            StartCity = startCity;
+            FinishCity = finishCity;
+            StartDate = new MyDate();
+            FinishDate = new MyDate();
+        }
+
 
         public int GetTotalTime()
         {

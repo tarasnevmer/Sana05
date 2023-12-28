@@ -39,6 +39,18 @@ namespace Task
             Weight = otherProduct.Weight;
         }
 
+
+
+        public Product(string name, double price, Currency cost, int quantity)
+        {
+            Name = name;
+            Price = price;
+            Cost = cost;
+            Quantity = quantity;
+            Producer = string.Empty;
+            Weight = 0;
+        }
+
         public double GetPriceInUAH()
         {
             return Price * Cost.ExRate;

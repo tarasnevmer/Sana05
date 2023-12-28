@@ -9,7 +9,7 @@ namespace Task
     public class Currency
     {
         protected string Name { get; set; }
-        protected double ExRate { get; set; }
+        internal double ExRate { get; set; }
 
         public Currency()
         {
@@ -26,6 +26,12 @@ namespace Task
         {
             Name = otherCurrency.Name;
             ExRate = otherCurrency.ExRate;
+        }
+
+        public Currency(string name)
+        {
+            Name = name;
+            ExRate = 0;
         }
     }
 }

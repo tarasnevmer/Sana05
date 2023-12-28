@@ -36,5 +36,14 @@ namespace Task
             Hours = otherDate.Hours;
             Minutes = otherDate.Minutes;
         }
+
+        public MyDate(int year, int month, int day)
+        {
+            Year = year;
+            Month = month;
+            Day = day;
+            Hours = 0;
+            Minutes = 0;
+        }
     }
 }
